@@ -98,37 +98,84 @@ describe('Strings - Exercise 1.2', function(){
 var code3 = require('../01-strings/03');
 
 describe('Strings - Exercise 1.3', function(){
-    it('abc is permutation of cba', function(){
-        assert.equal(true, code3.isPermutation('abc', 'cba'));
-        assert.equal(true, code3.isPermutation('cba', 'abc'));
-    });
+    describe('First Solution', function(){
+        it('abc is permutation of cba', function(){
+            assert.equal(true, code3.isPermutation('abc', 'cba'));
+            assert.equal(true, code3.isPermutation('cba', 'abc'));
+        });
 
-    it('abc is not a permutation of ab', function(){
-        assert.equal(false, code3.isPermutation('abc', 'ab'));
-        assert.equal(false, code3.isPermutation('ab', 'abc'));
-    });
+        it('abc is not a permutation of ab', function(){
+            assert.equal(false, code3.isPermutation('abc', 'ab'));
+            assert.equal(false, code3.isPermutation('ab', 'abc'));
+        });
 
-    it('abc is not a permutation of def', function(){
-        assert.equal(false, code3.isPermutation('abc', 'def'));
-        assert.equal(false, code3.isPermutation('def', 'abc'));
-    });
+        it('abc is not a permutation of def', function(){
+            assert.equal(false, code3.isPermutation('abc', 'def'));
+            assert.equal(false, code3.isPermutation('def', 'abc'));
+        });
 
-    it('aaa is a permutation of aaa', function(){
-        assert.equal(true, code3.isPermutation('aaa', 'aaa'));
-    });
+        it('aaa is a permutation of aaa', function(){
+            assert.equal(true, code3.isPermutation('aaa', 'aaa'));
+        });
 
-    it('abc is not a permutation of null', function(){
-        assert.equal(false, code3.isPermutation('abc', null));
-        assert.equal(false, code3.isPermutation(null, 'abc'));
-    });
+        it('abc is not a permutation of null', function(){
+            assert.equal(false, code3.isPermutation('abc', null));
+            assert.equal(false, code3.isPermutation(null, 'abc'));
+        });
 
-    it('abc is not a permutation of 1', function(){
-        assert.equal(false, code3.isPermutation('abc', 1));
-        assert.equal(false, code3.isPermutation(1, 'abc'));
-    });
+        it('abc is not a permutation of 1', function(){
+            assert.equal(false, code3.isPermutation('abc', 1));
+            assert.equal(false, code3.isPermutation(1, 'abc'));
+        });
 
-    it('abc is not a permutation of empty string', function(){
-        assert.equal(false, code3.isPermutation('abc', ''));
-        assert.equal(false, code3.isPermutation('', 'abc'));
+        it('abc is not a permutation of empty string', function(){
+            assert.equal(false, code3.isPermutation('abc', ''));
+            assert.equal(false, code3.isPermutation('', 'abc'));
+        });
+    });
+    describe('Second Solution', function(){
+
+        describe('Sort function', function(){
+            it('fedcba is sorted to abcdef', function(){
+                assert.equal('abcdef', code3.sort('fedcba'));
+            });
+            it('zfaht is sorted to afhtz', function(){
+                assert.equal('afhtz', code3.sort('zfaht'));
+            });
+        });
+
+        it('abc is permutation of cba', function(){
+            assert.equal(true, code3.isPermutation2('abc', 'cba'));
+            assert.equal(true, code3.isPermutation2('cba', 'abc'));
+        });
+
+        it('abc is not a permutation of ab', function(){
+            assert.equal(false, code3.isPermutation2('abc', 'ab'));
+            assert.equal(false, code3.isPermutation2('ab', 'abc'));
+        });
+
+        it('abc is not a permutation of def', function(){
+            assert.equal(false, code3.isPermutation2('abc', 'def'));
+            assert.equal(false, code3.isPermutation2('def', 'abc'));
+        });
+
+        it('aaa is a permutation of aaa', function(){
+            assert.equal(true, code3.isPermutation2('aaa', 'aaa'));
+        });
+
+        it('abc is not a permutation of null', function(){
+            assert.equal(false, code3.isPermutation2('abc', null));
+            assert.equal(false, code3.isPermutation2(null, 'abc'));
+        });
+
+        it('abc is not a permutation of 1', function(){
+            assert.equal(false, code3.isPermutation2('abc', 1));
+            assert.equal(false, code3.isPermutation2(1, 'abc'));
+        });
+
+        it('abc is not a permutation of empty string', function(){
+            assert.equal(false, code3.isPermutation2('abc', ''));
+            assert.equal(false, code3.isPermutation2('', 'abc'));
+        });
     });
 });

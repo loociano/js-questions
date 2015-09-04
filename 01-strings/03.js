@@ -44,6 +44,29 @@ function isPermutation(string1, string2){
   return true;
 }
 
+/** @param {string1}
+    @param {string2}
+    @return {boolean} true if strings are permutations  */
+function isPermutation2(string1, string2){
+  if (typeof string1 !== 'string' || typeof string2 !== 'string' || !string1 || !string2){
+    return false;
+  }
+
+  if (string1.length !== string2.length){
+    return false;
+  }
+
+  return sort(string1) === sort(string2); 
+}
+
+/** @param {string} 
+  * @return {string} sorted string */
+function sort(string){
+  return string.split('').sort().join('');
+}
+
 if(typeof exports !== 'undefined') {
     exports.isPermutation = isPermutation;
+    exports.isPermutation2 = isPermutation2;
+    exports.sort = sort;
 }
