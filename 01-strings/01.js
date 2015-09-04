@@ -45,65 +45,45 @@ function hasAllUniqueCharacters(string){
   return true;
 }
 
-// Tests
-console.log("Testing hasAllUniqueCharacters(string)");
-console.assert(hasAllUniqueCharacters('abc') === true, "FAILED: abc has unique characters");
-console.assert(hasAllUniqueCharacters('aabbcc') === false, "FAILED: aabbcc has duplicated characters");
-console.assert(hasAllUniqueCharacters('aaa') === false, "FAILED: aaa has duplicated characters");
-console.assert(hasAllUniqueCharacters(null) === false, "FAILED: string is null");
-console.assert(hasAllUniqueCharacters('') === false, "FAILED: string is empty");
-console.assert(hasAllUniqueCharacters('my name') === false, "FAILED: string contains invalid characters");
-console.assert(hasAllUniqueCharacters(1) === false, "FAILED: input is not a string");
-console.assert(hasAllUniqueCharacters(NaN) === false, "FAILED: input is NaN");
-
-
 /**
  * Second solution
  * Suggested by the book, with a bit checker
  *
- * It is not possible to implement exactly the same 256 bit checker in JavaScript,
- * as JavaScript performs bitwise comparison using signed 32-bit integers.
- * We will need to use 256 / 32 = 8 integers.
+ * JS uses 32-bit signed integers for bitwise comparisons
  */
 function hasAllUniqueCharacters2(string){
-  var bitArray = [0, 0, 0, 0, 0, 0, 0, 0]; // 32x8 = 256 bits
 
-  if (!string || typeof string !== 'string'|| string.length > 256) {
+  if (!string || typeof string !== 'string'|| string.length > 32) {
     return false;
   }
+
+  var checker = 0; // 32-bit checker for the alphabet 
   
   for (var i = 0, l = string.length; i < l; i++){
-    var charCode = string.charCodeAt(i);
+    
+    var val = string.charCodeAt(i) - 'a'.charCodeAt(); // a=0, b=1...
 
-    var slot = charCode % 32;
-
-    if (bitArray[slot] & (1 << charCode) > 0){
+    if ((checker & (1 << val)) > 0){
         return false;
     }
-    bitArray[slot] |= (1 << charCode);
+    checker |= (1 << val);
   }
   return true;
 }
 
-// Tests
-console.log("Testing hasAllUniqueCharacters2(string)");
-console.assert(hasAllUniqueCharacters2('abc') === true, "FAILED: abc has unique characters");
-console.assert(hasAllUniqueCharacters2('aabbcc') === false, "FAILED: aabbcc has duplicated characters");
-console.assert(hasAllUniqueCharacters2('aaa') === false, "FAILED: aaa has duplicated characters");
-console.assert(hasAllUniqueCharacters2(null) === false, "FAILED: string is null");
-console.assert(hasAllUniqueCharacters2('') === false, "FAILED: string is empty");
-console.assert(hasAllUniqueCharacters2('my name') === false, "FAILED: string contains invalid characters");
-console.assert(hasAllUniqueCharacters2(1) === false, "FAILED: input is not a string");
-console.assert(hasAllUniqueCharacters2(NaN) === false, "FAILED: input is NaN");
-
-
 /**
  * Highlights:
- * Bitwise operations in JS: & | <<...
+ * Bitwise operations in JS: & | << ...
  * Cost of concatenating strings
  * Difference between:
- *  slice(startI [,endI])
- *  substr(startI [, endI])
- *  substring(startI, length)
+ *  1. slice(startI [,endI])
+ *  2. substr(startI [, endI]) <--- swaps the indexes if startI < endI
+ *  3. substring(startI, length) <--- length!
  * 
  * string.charCodeAt() to get the ASCII Character Code
+ */
+
+if(typeof exports !== 'undefined') {
+    exports.hasAllUniqueCharacters = hasAllUniqueCharacters;
+    exports.hasAllUniqueCharacters2 = hasAllUniqueCharacters2;
+}

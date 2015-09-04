@@ -1,0 +1,18 @@
+{
+  "name": "js-questions",
+  "version": "1.0.0",
+  "description": "JS Questions",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loociano/js-questions.git"
+  },
+  "author": "Luciano Rubio",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/loociano/js-questions/issues"
+  },
+  "homepage": "https://github.com/loociano/js-questions"
+}
