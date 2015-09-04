@@ -95,3 +95,15 @@ console.assert(hasAllUniqueCharacters2('') === false, "FAILED: string is empty")
 console.assert(hasAllUniqueCharacters2('my name') === false, "FAILED: string contains invalid characters");
 console.assert(hasAllUniqueCharacters2(1) === false, "FAILED: input is not a string");
 console.assert(hasAllUniqueCharacters2(NaN) === false, "FAILED: input is NaN");
+
+
+/**
+ * Highlights:
+ * Bitwise operations in JS: & | <<...
+ * Cost of concatenating strings
+ * Difference between:
+ *  slice(startI [,endI])
+ *  substr(startI [, endI])
+ *  substring(startI, length)
+ * 
+ * string.charCodeAt() to get the ASCII Character Code
