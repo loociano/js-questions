@@ -16,12 +16,15 @@
  * f('aaa') // false
  * f(null) // false
  * f('') // false
+ * f('my name') // false (because of space)
+ * f(1) // false (invalid input)
+ * f(NaN) // false (invalid input)
  */
 function hasAllUniqueCharacters(string){
 
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'; // assumption
   
-  if (!string || string.length > alphabet.length) {
+  if (!string || typeof string !== 'string'|| string.length > alphabet.length) {
     return false;
   }
 
@@ -43,3 +46,6 @@ console.assert(hasAllUniqueCharacters('aabbcc') === false, "FAILED: aabbcc has d
 console.assert(hasAllUniqueCharacters('aaa') === false, "FAILED: aaa has duplicated characters");
 console.assert(hasAllUniqueCharacters(null) === false, "FAILED: string is null");
 console.assert(hasAllUniqueCharacters('') === false, "FAILED: string is empty");
+console.assert(hasAllUniqueCharacters('my name') === false, "FAILED: string contains invalid characters");
+console.assert(hasAllUniqueCharacters(1) === false, "FAILED: input is not a string");
+console.assert(hasAllUniqueCharacters(NaN) === false, "FAILED: input is NaN");
