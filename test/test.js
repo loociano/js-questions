@@ -1,8 +1,8 @@
 var assert = require('assert');
 var code = require('../01-strings/01');
 
-describe('Strings', function(){
-    describe('Exercise 1.1 - First Solution', function(){
+describe('Strings - Exercise 1.1', function(){
+    describe('First Solution', function(){
         it('abc has unique characters', function(){
             assert.equal(true, code.hasAllUniqueCharacters('abc'));
         });
@@ -36,7 +36,7 @@ describe('Strings', function(){
         });
     });
 
-    describe('Exercise 1.1 - Second Solution', function(){
+    describe('Second Solution', function(){
         it('abc has unique characters', function(){
             assert.equal(true, code.hasAllUniqueCharacters2('abc'));
         });
@@ -68,5 +68,29 @@ describe('Strings', function(){
         it('input is NaN', function(){
             assert.equal(false, code.hasAllUniqueCharacters2(NaN));
         });
+    });
+});
+
+var code2 = require('../01-strings/02');
+
+describe('Strings - Exercise 1.2', function(){
+    it('abc reverses to cba', function(){
+        assert.equal('cba', code2.reverse('abc'));
+    });
+
+    it('aabb reverses to bbaa', function(){
+        assert.equal('bbaa', code2.reverse('aabb'));
+    });
+
+    it('null reverses to null', function(){
+        assert.equal(null, code2.reverse(null));
+    });
+
+    it('empty string reverses to empty string', function(){
+        assert.equal('', code2.reverse(''));
+    });
+
+    it('a non string returns the same value', function(){
+        assert.equal(1, code2.reverse(1));
     });
 });
