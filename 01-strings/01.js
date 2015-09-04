@@ -1,17 +1,17 @@
 /**
  * Problem 1.1
- * Write a function that determines if a string has 
- * all unique characters.
+ * Implement an algorithm to determine if a string has all unique
+ * characters. What if you cannot use additional data structures?
  * 
  * Question I'd ask:
  * - What is the character encoding? ASCII? Unicode? 
- * - Can the string be null? Empty?
+ * - Can the string be null? Empty? What if it's a number?
  * 
  * Assumptions:
- * - String contain only letters
+ * - String contain only letters, spaces or symbols are not allowed
  * - If string is null, undefined or empty, return false.
  *
- * Tests:
+ * Test:
  * f('abc') // true
  * f('aaa') // false
  * f(null) // false
