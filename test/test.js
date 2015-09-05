@@ -24,6 +24,8 @@ deleteNode = code.deleteNode;
 code = require('../02-linked-lists/2-5');
 sumDigitsLL = code.sumDigitsLL;
 
+require('../02-linked-lists/2-6');
+
 require('../02-linked-lists/2-7');
 
 describe('Strings - Exercise 1.1', function(){
@@ -421,6 +423,32 @@ describe('Linked Lists', function(){
 
         it('return null as both linked list heads are null', function(){
             assert.equal(sumDigitsLL(null, null), null);
+        });
+    });
+
+    describe('Exercise 2.6', function(){
+
+        it('find node from circular linked list', function(){
+
+            var head = new Node('A');
+            head.appendToTail('B');
+            var nodeC = head.appendToTail('C');
+            head.appendToTail('D');
+            head.appendToTail('E');
+            head.appendNodeToTail(nodeC);
+
+            assert.equal(head.findLoopNode(), 'C');
+        });
+
+        it('do nothing if the linked list is not circular', function(){
+
+            var head = new Node('A');
+            head.appendToTail('B');
+            head.appendToTail('C');
+            head.appendToTail('D');
+            head.appendToTail('E');
+
+            assert.equal(head.findLoopNode(), null);
         });
     });
 

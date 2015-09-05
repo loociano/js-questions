@@ -20,6 +20,21 @@ Node.prototype.appendToTail = function(d) {
   return end;
 }
 
+/** @param {Object} data */
+Node.prototype.appendNodeToTail = function(node) {
+  
+  if (!node instanceof Node) return;
+
+  var end = node;
+  var n = this; // this == head
+
+  while (n.next !== null){
+    n = n.next;
+  }
+  n.next = end;
+  return end;
+}
+
 /** @return {Object} data */
 Node.prototype.getData = function(){
   return this.d;
