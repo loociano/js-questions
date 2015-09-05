@@ -15,7 +15,8 @@ sort = code.sort;
 code = require('../02-linked-lists/Node');
 Node = code.Node;
 
-code = require('../02-linked-lists/2-1');
+require('../02-linked-lists/2-1');
+require('../02-linked-lists/2-2');
 
 describe('Strings - Exercise 1.1', function(){
     describe('First Solution', function(){
@@ -310,6 +311,36 @@ describe('Linked Lists', function(){
             head.removeDuplicates2();
 
             assert.equal(head.toString(), 'a->b->c->null');
+        });
+    });
+
+    describe('Exercise 2.2 - Solution 1', function(){
+
+        it('should find the k=1 to last node', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal(head.findKthToLast(0).getData(), 'c');
+        });
+
+        it('should find the first node', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal(head.findKthToLast(100).getData(), 'a');
+        });
+
+        it('should return null as k < 0', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal(head.findKthToLast(-1), null);
         });
     });
 });
