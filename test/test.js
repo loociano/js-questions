@@ -382,7 +382,7 @@ describe('Linked Lists', function(){
         });
     });
 
-    describe('Exercise 2.7', function(){
+    describe('Exercise 2.7 - Solution 1', function(){
 
         it('is palindrome', function(){
             
@@ -418,6 +418,45 @@ describe('Linked Lists', function(){
             head.appendToTail('a');
 
             assert.equal(head.isPalindrome(), false);
+        });
+    });
+
+    describe('Exercise 2.7 - Solution 2', function(){
+
+        it('is palindrome', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('a');
+
+            assert.equal(head.isPalindrome2(), true);
+        });
+
+        it('is not palindrome', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal(head.isPalindrome2(), false);
+        });
+
+        it('single node is palindrome', function(){
+            
+            var head = new Node('a');
+
+            assert.equal(head.isPalindrome2(), true);
+        });
+
+        it('only same beginning and end is not palindrome', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+            head.appendToTail('d');
+            head.appendToTail('a');
+
+            assert.equal(head.isPalindrome2(), false);
         });
     });
 });

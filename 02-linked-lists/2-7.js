@@ -38,3 +38,31 @@ Node.prototype.isPalindrome = function(){
   }
   return true;
 }
+
+/** Book solution with slow and fast runner */
+Node.prototype.isPalindrome2 = function(){
+
+  var slow = this;
+  var fast = this;
+
+  var stack = [];
+
+  while ( fast !== null && fast.next !== null){
+    stack.push(slow.getData());
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  if (fast !== null){ // has odd number of nodes, let slow skip middle node
+    slow = slow.next;
+  }
+
+  while (slow !== null){
+    var top = stack.pop();
+    if (top !== slow.getData()){
+      return false;
+    }
+    slow = slow.next;
+  }
+  return true;
+}
