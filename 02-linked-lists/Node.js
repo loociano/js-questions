@@ -32,7 +32,7 @@ Node.prototype.setData = function(d){
 
 /** @return {String} stringifyied linked list, 
   * for example a->b->c->null */
-Node.prototype.toString = function(){
+Node.prototype.toListString = function(){
   var n = this;
   var output = [];
 
@@ -45,7 +45,6 @@ Node.prototype.toString = function(){
 
   return output.join('->');
 }
-
 
 /** @param {Node} head
     @param {Object} data 

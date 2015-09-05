@@ -209,7 +209,7 @@ describe('Linked Lists', function(){
         head.appendToTail('b');
         head.appendToTail('c');
 
-        assert.equal('a->b->c->null', head.toString());
+        assert.equal('a->b->c->null', head.toListString());
     });
 
     it('Test linked list with null data', function(){
@@ -217,7 +217,7 @@ describe('Linked Lists', function(){
         var head = new Node(null);
         head.appendToTail(null);
 
-        assert.equal('null->null->null', head.toString());
+        assert.equal('null->null->null', head.toListString());
     });
 
     it('Should remove nodes', function(){
@@ -226,7 +226,7 @@ describe('Linked Lists', function(){
         head.appendToTail('b');
         head.appendToTail('c');
 
-        assert.equal('a->c->null', head.removeNode('b'));
+        assert.equal('a->c->null', head.removeNode('b').toListString());
     });
 
     it('Should not remove nodes', function(){
@@ -235,7 +235,7 @@ describe('Linked Lists', function(){
         head.appendToTail('b');
         head.appendToTail('c');
 
-        assert.equal('a->b->c->null', head.removeNode('z'));
+        assert.equal('a->b->c->null', head.removeNode('z').toListString());
     });
 
     describe('Exercise 2.1 - Solution 1', function(){
@@ -245,11 +245,11 @@ describe('Linked Lists', function(){
             var head = new Node('a');
             head.appendToTail('a');
 
-            assert.equal(head.toString(), 'a->a->null');
+            assert.equal(head.toListString(), 'a->a->null');
 
             head.removeDuplicates();
 
-            assert.equal(head.toString(), 'a->null');
+            assert.equal(head.toListString(), 'a->null');
         });
 
         it('should remove several duplicates', function(){
@@ -260,11 +260,11 @@ describe('Linked Lists', function(){
             head.appendToTail('c');
             head.appendToTail('c');
 
-            assert.equal('z->z->b->c->c->null', head.toString());
+            assert.equal('z->z->b->c->c->null', head.toListString());
 
             head.removeDuplicates();
 
-            assert.equal('z->b->c->null', head.toString());
+            assert.equal('z->b->c->null', head.toListString());
         });
 
         it('should not remove any node (there are no duplicates)', function(){
@@ -273,10 +273,10 @@ describe('Linked Lists', function(){
             head.appendToTail('b');
             head.appendToTail('c');
 
-            assert.equal('a->b->c->null', head.toString());
+            assert.equal('a->b->c->null', head.toListString());
             head.removeDuplicates();
 
-            assert.equal('a->b->c->null', head.toString());
+            assert.equal('a->b->c->null', head.toListString());
         });
     });
 
@@ -287,11 +287,11 @@ describe('Linked Lists', function(){
             var head = new Node('a');
             head.appendToTail('a');
 
-            assert.equal(head.toString(), 'a->a->null');
+            assert.equal(head.toListString(), 'a->a->null');
 
             head.removeDuplicates2();
 
-            assert.equal(head.toString(), 'a->null');
+            assert.equal(head.toListString(), 'a->null');
         });
 
         it('should remove duplicates (third node)', function(){
@@ -301,11 +301,11 @@ describe('Linked Lists', function(){
             head.appendToTail('a');
             head.appendToTail('c');
 
-            assert.equal(head.toString(), 'a->b->a->c->null');
+            assert.equal(head.toListString(), 'a->b->a->c->null');
 
             head.removeDuplicates2();
 
-            assert.equal(head.toString(), 'a->b->c->null');
+            assert.equal(head.toListString(), 'a->b->c->null');
         });
 
         it('should not remove duplicates', function(){
@@ -314,11 +314,11 @@ describe('Linked Lists', function(){
             head.appendToTail('b');
             head.appendToTail('c');
 
-            assert.equal(head.toString(), 'a->b->c->null');
+            assert.equal(head.toListString(), 'a->b->c->null');
 
             head.removeDuplicates2();
 
-            assert.equal(head.toString(), 'a->b->c->null');
+            assert.equal(head.toListString(), 'a->b->c->null');
         });
     });
 
@@ -362,11 +362,11 @@ describe('Linked Lists', function(){
             head.appendToTail('d');
             head.appendToTail('e');
 
-            assert.equal(head.toString(), 'a->b->c->d->e->null');
+            assert.equal(head.toListString(), 'a->b->c->d->e->null');
 
             deleteNode(node);
 
-            assert.equal(head.toString(), 'a->b->d->e->null');
+            assert.equal(head.toListString(), 'a->b->d->e->null');
         });
 
         it('should not do anything due to invalid input node', function(){
@@ -377,11 +377,11 @@ describe('Linked Lists', function(){
             head.appendToTail('d');
             var node = head.appendToTail('e');
 
-            assert.equal(head.toString(), 'a->b->c->d->e->null');
+            assert.equal(head.toListString(), 'a->b->c->d->e->null');
 
             deleteNode(node);
 
-            assert.equal(head.toString(), 'a->b->c->d->e->null');
+            assert.equal(head.toListString(), 'a->b->c->d->e->null');
         });
     });
 
@@ -397,7 +397,7 @@ describe('Linked Lists', function(){
             head2.appendToTail(9);
             head2.appendToTail(2);
 
-            assert.equal(sumDigitsLL(head1, head2).toString(), '2->1->9->null');
+            assert.equal(sumDigitsLL(head1, head2).toListString(), '2->1->9->null');
         });
 
         it('sum digits from linked lists with different amount of nodes', function(){
@@ -408,15 +408,15 @@ describe('Linked Lists', function(){
             head2.appendToTail(9);
             head2.appendToTail(2);
 
-            assert.equal(sumDigitsLL(head1, head2).toString(), '6->9->2->null');
+            assert.equal(sumDigitsLL(head1, head2).toListString(), '6->9->2->null');
         });
 
         it('does not sum as one head is null', function(){
-            assert.equal(sumDigitsLL(new Node(1), null), '1->null');
+            assert.equal(sumDigitsLL(new Node(1), null).toListString(), '1->null');
         });
 
         it('does not sum as one head is null', function(){
-            assert.equal(sumDigitsLL(null, new Node(2)), '2->null');
+            assert.equal(sumDigitsLL(null, new Node(2)).toListString(), '2->null');
         });
 
         it('return null as both linked list heads are null', function(){
