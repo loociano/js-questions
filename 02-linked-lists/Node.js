@@ -4,7 +4,7 @@
 
 /** @param {Object} data */
 function Node(d){
-  this.d = d;
+  this.d = d || null;
   this.next = null;
 }
 
