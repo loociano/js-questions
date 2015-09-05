@@ -15,6 +15,8 @@ sort = code.sort;
 code = require('../02-linked-lists/Node');
 Node = code.Node;
 
+code = require('../02-linked-lists/2-1');
+
 describe('Strings - Exercise 1.1', function(){
     describe('First Solution', function(){
         it('abc has unique characters', function(){
@@ -201,6 +203,14 @@ describe('Linked Lists', function(){
         assert.equal('a->b->c->null', head.toString());
     });
 
+    it('Test linked list with null data', function(){
+        
+        var head = new Node(null);
+        head.appendToTail(null);
+
+        assert.equal('null->null->null', head.toString());
+    });
+
     it('Should remove nodes', function(){
         
         var head = new Node('a');
@@ -217,5 +227,47 @@ describe('Linked Lists', function(){
         head.appendToTail('c');
 
         assert.equal('a->b->c->null', head.removeNode('z'));
+    });
+
+    describe('Exercise 2.1', function(){
+
+        it('should remove duplicates (last node)', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('a');
+
+            assert.equal(head.toString(), 'a->a->null');
+
+            head.removeDuplicates();
+
+            assert.equal(head.toString(), 'a->null');
+        });
+
+        it('should remove several duplicates', function(){
+            
+            var head = new Node('z');
+            head.appendToTail('z');
+            head.appendToTail('b');
+            head.appendToTail('c');
+            head.appendToTail('c');
+
+            assert.equal('z->z->b->c->c->null', head.toString());
+
+            head.removeDuplicates();
+
+            assert.equal('z->b->c->null', head.toString());
+        });
+
+        it('should not remove any node (there are no duplicates)', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal('a->b->c->null', head.toString());
+            head.removeDuplicates();
+
+            assert.equal('a->b->c->null', head.toString());
+        });
     });
 });
