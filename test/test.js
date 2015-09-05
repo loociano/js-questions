@@ -18,6 +18,9 @@ Node = code.Node;
 require('../02-linked-lists/2-1');
 require('../02-linked-lists/2-2');
 
+code = require('../02-linked-lists/2-3');
+deleteNode = code.deleteNode;
+
 describe('Strings - Exercise 1.1', function(){
     describe('First Solution', function(){
         it('abc has unique characters', function(){
@@ -314,7 +317,7 @@ describe('Linked Lists', function(){
         });
     });
 
-    describe('Exercise 2.2 - Solution 1', function(){
+    describe('Exercise 2.2', function(){
 
         it('should find the k=1 to last node', function(){
             
@@ -341,6 +344,39 @@ describe('Linked Lists', function(){
             head.appendToTail('c');
 
             assert.equal(head.findKthToLast(-1), null);
+        });
+    });
+
+    describe('Exercise 2.3', function(){
+
+        it('delete a node of a singly linked list given only access to the node', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            var node = head.appendToTail('c');
+            head.appendToTail('d');
+            head.appendToTail('e');
+
+            assert.equal(head.toString(), 'a->b->c->d->e->null');
+
+            deleteNode(node);
+
+            assert.equal(head.toString(), 'a->b->d->e->null');
+        });
+
+        it('should not do anything due to invalid input node', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+            head.appendToTail('d');
+            var node = head.appendToTail('e');
+
+            assert.equal(head.toString(), 'a->b->c->d->e->null');
+
+            deleteNode(node);
+
+            assert.equal(head.toString(), 'a->b->c->d->e->null');
         });
     });
 });

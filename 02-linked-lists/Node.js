@@ -17,6 +17,7 @@ Node.prototype.appendToTail = function(d) {
     n = n.next;
   }
   n.next = end;
+  return end;
 }
 
 /** @return {Object} data */
