@@ -21,6 +21,9 @@ require('../02-linked-lists/2-2');
 code = require('../02-linked-lists/2-3');
 deleteNode = code.deleteNode;
 
+code = require('../02-linked-lists/2-5');
+sumDigitsLL = code.sumDigitsLL;
+
 require('../02-linked-lists/2-7');
 
 describe('Strings - Exercise 1.1', function(){
@@ -379,6 +382,45 @@ describe('Linked Lists', function(){
             deleteNode(node);
 
             assert.equal(head.toString(), 'a->b->c->d->e->null');
+        });
+    });
+
+    describe('Exercise 2.5', function(){
+
+        it('sum digits from two linked lists', function(){
+
+            var head1 = new Node(7);
+            head1.appendToTail(1);
+            head1.appendToTail(6);
+
+            var head2 = new Node(5);
+            head2.appendToTail(9);
+            head2.appendToTail(2);
+
+            assert.equal(sumDigitsLL(head1, head2).toString(), '2->1->9->null');
+        });
+
+        it('sum digits from linked lists with different amount of nodes', function(){
+
+            var head1 = new Node(1);
+
+            var head2 = new Node(5);
+            head2.appendToTail(9);
+            head2.appendToTail(2);
+
+            assert.equal(sumDigitsLL(head1, head2).toString(), '6->9->2->null');
+        });
+
+        it('does not sum as one head is null', function(){
+            assert.equal(sumDigitsLL(new Node(1), null), '1->null');
+        });
+
+        it('does not sum as one head is null', function(){
+            assert.equal(sumDigitsLL(null, new Node(2)), '2->null');
+        });
+
+        it('return null as both linked list heads are null', function(){
+            assert.equal(sumDigitsLL(null, null), null);
         });
     });
 
