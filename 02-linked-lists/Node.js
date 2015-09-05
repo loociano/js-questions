@@ -24,6 +24,11 @@ Node.prototype.getData = function(){
   return this.d;
 }
 
+/** @param {Object} data */
+Node.prototype.setData = function(d){
+  this.d = d;
+}
+
 /** @return {String} stringifyied linked list, 
   * for example a->b->c->null */
 Node.prototype.toString = function(){
@@ -31,10 +36,10 @@ Node.prototype.toString = function(){
   var output = [];
 
   while (n.next !== null){
-    output.push(n.getData());
+    output.push(n.getData() || 'null');
     n = n.next;
   }
-  output.push(n.getData()); // last node
+  output.push(n.getData() || 'null'); // last node
   output.push('null');
 
   return output.join('->');
