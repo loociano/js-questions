@@ -229,7 +229,7 @@ describe('Linked Lists', function(){
         assert.equal('a->b->c->null', head.removeNode('z'));
     });
 
-    describe('Exercise 2.1', function(){
+    describe('Exercise 2.1 - Solution 1', function(){
 
         it('should remove duplicates (last node)', function(){
             
@@ -268,6 +268,48 @@ describe('Linked Lists', function(){
             head.removeDuplicates();
 
             assert.equal('a->b->c->null', head.toString());
+        });
+    });
+
+    describe('Exercise 2.1 - Solution 2', function(){
+
+        it('should remove duplicates (last node)', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('a');
+
+            assert.equal(head.toString(), 'a->a->null');
+
+            head.removeDuplicates2();
+
+            assert.equal(head.toString(), 'a->null');
+        });
+
+        it('should remove duplicates (third node)', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('a');
+            head.appendToTail('c');
+
+            assert.equal(head.toString(), 'a->b->a->c->null');
+
+            head.removeDuplicates2();
+
+            assert.equal(head.toString(), 'a->b->c->null');
+        });
+
+        it('should not remove duplicates', function(){
+            
+            var head = new Node('a');
+            head.appendToTail('b');
+            head.appendToTail('c');
+
+            assert.equal(head.toString(), 'a->b->c->null');
+
+            head.removeDuplicates2();
+
+            assert.equal(head.toString(), 'a->b->c->null');
         });
     });
 });

@@ -46,3 +46,23 @@ Node.prototype.removeDuplicates = function(){
     head.removeNode(null);
   }
 }
+
+/** Book solution taking O(n) time */
+Node.prototype.removeDuplicates2 = function(){
+  var temp = {}; // hashtable
+  var previous = null; // keep ref to the last visited node
+  var n = this; // assume function invoked from head
+
+  while (n !== null){
+
+    var d = n.getData();
+
+    if (temp[d]){
+      previous.next = n.next;
+    } else {
+      temp[d] = d;
+      previous = n;
+    }
+    n = n.next;
+  }
+}
