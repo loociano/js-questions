@@ -41,6 +41,29 @@ Node.prototype.toString = function(){
 }
 
 
+/** @param {Node} head
+    @param {Object} data 
+    @return {Node} head */
+Node.prototype.removeNode = function(d){
+
+  var head = this;
+  var n = head; // assuming invoked from head
+
+  if (n.getData() === d){
+    return head.next;
+  }
+
+  while (n.next !== null){
+    if (n.next.getData() === d){
+      n.next = n.next.next;
+      return head;
+    }
+    n = n.next;
+  }
+  return head;
+}
+
+
 if(typeof exports !== 'undefined') {
     exports.Node = Node;
 }

@@ -200,4 +200,22 @@ describe('Linked Lists', function(){
 
         assert.equal('a->b->c->null', head.toString());
     });
+
+    it('Should remove nodes', function(){
+        
+        var head = new Node('a');
+        head.appendToTail('b');
+        head.appendToTail('c');
+
+        assert.equal('a->c->null', head.removeNode('b'));
+    });
+
+    it('Should not remove nodes', function(){
+        
+        var head = new Node('a');
+        head.appendToTail('b');
+        head.appendToTail('c');
+
+        assert.equal('a->b->c->null', head.removeNode('z'));
+    });
 });
