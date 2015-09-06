@@ -60,6 +60,25 @@ Root.prototype.traverse = function(array){
   }
 }
 
+/** Depth First Search */
+Root.prototype.dfs = function(result){
+  
+  var root = this;
+
+  var result = result || [];
+  result.push(root.d);
+
+  root.visited = true;
+  
+  var adjacent = [root.left, root.right];
+  adjacent.forEach(function(n){
+    if (n !== null && n.visited !== true){
+      n.dfs(result);
+    }
+  });
+  return result.join(',');
+}
+
 
 if(typeof exports !== 'undefined') {
     exports.Root = Root;
