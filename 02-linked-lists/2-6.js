@@ -13,6 +13,8 @@
  * Output: C
  *
  * Questions: what if the input linked list is not circular?
+ * - Assume it will return null
+ *
  */
 Node.prototype.findLoopNode = function(){
   

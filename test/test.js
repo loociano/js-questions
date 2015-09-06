@@ -21,6 +21,8 @@ require('../02-linked-lists/2-2');
 code = require('../02-linked-lists/2-3');
 deleteNode = code.deleteNode;
 
+require('../02-linked-lists/2-4');
+
 code = require('../02-linked-lists/2-5');
 sumDigitsLL = code.sumDigitsLL;
 
@@ -384,6 +386,42 @@ describe('Linked Lists', function(){
             deleteNode(node);
 
             assert.equal(head.toListString(), 'a->b->c->d->e->null');
+        });
+    });
+
+    describe('Exercise 2.4', function(){
+
+        it('partition two linked lists on value', function(){
+
+            var head = new Node(2);
+            head.appendToTail(5);
+            head.appendToTail(1);
+            head.appendToTail(7);
+            head.appendToTail(3);
+
+            assert.equal(head.partition(5), '2->1->3->null 5->7->null');
+        });
+
+        it('do not partition if value is higher than the maximum', function(){
+
+            var head = new Node(2);
+            head.appendToTail(5);
+            head.appendToTail(1);
+            head.appendToTail(7);
+            head.appendToTail(3);
+
+            assert.equal(head.partition(10), '2->5->1->7->3->null');
+        });
+
+        it('do not partition if value is lower than the minimum', function(){
+
+            var head = new Node(2);
+            head.appendToTail(5);
+            head.appendToTail(1);
+            head.appendToTail(7);
+            head.appendToTail(3);
+
+            assert.equal(head.partition(0), '2->5->1->7->3->null');
         });
     });
 

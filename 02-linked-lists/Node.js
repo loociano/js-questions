@@ -51,11 +51,10 @@ Node.prototype.toListString = function(){
   var n = this;
   var output = [];
 
-  while (n.next !== null){
+  while (n !== null){
     output.push(n.getData() || 'null');
     n = n.next;
   }
-  output.push(n.getData() || 'null'); // last node
   output.push('null');
 
   return output.join('->');
