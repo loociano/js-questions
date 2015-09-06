@@ -30,6 +30,9 @@ require('../02-linked-lists/2-6');
 
 require('../02-linked-lists/2-7');
 
+code = require('../04-trees-and-graphs/Root');
+Root = code.Root;
+
 describe('Strings - Exercise 1.1', function(){
     describe('First Solution', function(){
         it('abc has unique characters', function(){
@@ -566,5 +569,32 @@ describe('Linked Lists', function(){
 
             assert.equal(head.isPalindrome2(), false);
         });
+    });
+});
+
+/** Linked Lists */
+describe('Binary trees', function(){
+    it('Binary Tree with 3 nodes', function(){
+        
+        var root = new Root(8);
+        root.add(3);
+        root.add(10);
+
+        assert.equal(root.toString(), "8,3,10");
+    });
+
+    it('Binary Tree with 9 nodes', function(){
+        
+        var root = new Root(8);
+        root.add(3);
+        root.add(10);
+        root.add(1);
+        root.add(6);
+        root.add(4);
+        root.add(7);
+        root.add(14);
+        root.add(13);
+
+        assert.equal(root.toString(), "8,3,1,6,4,7,10,14,13");
     });
 });
