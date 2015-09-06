@@ -614,14 +614,34 @@ describe('Binary trees', function(){
         assert.equal(root.toString(), "8,3,1,6,4,7,10,14,13");
     });
 
-    it('Depth First Search on Binary Tree with 4 nodes', function(){
+    it('Depth First Search (DFS) on Binary Tree with 9 nodes', function(){
         
-        var root = new Root(15);
-        root.add(1);
+        var root = new Root(8);
         root.add(3);
-        root.add(2);
+        root.add(10);
+        root.add(1);
+        root.add(6);
+        root.add(4);
+        root.add(7);
+        root.add(14);
+        root.add(13);
 
-        assert.equal(root.dfs(), "15,1,3,2");
+        assert.equal(root.dfs(), "8,3,1,6,4,7,10,14,13");
+    });
+
+    it('Breadth First Search (BFS) on Binary Tree with 9 nodes', function(){
+        
+        var root = new Root(8);
+        root.add(3);
+        root.add(10);
+        root.add(1);
+        root.add(6);
+        root.add(4);
+        root.add(7);
+        root.add(14);
+        root.add(13);
+
+        assert.equal(root.bfs(), "8,3,10,1,6,14,4,7,13");
     });
 
 });

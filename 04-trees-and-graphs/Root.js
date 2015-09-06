@@ -79,6 +79,26 @@ Root.prototype.dfs = function(result){
   return result.join(',');
 }
 
+Root.prototype.bfs = function(result, queue){
+
+  var root = this;
+
+  var queue = queue || new Queue();
+  var result = result || [];
+  
+  if (root.left !== null) queue.enqueue(root.left);
+  if (root.right !== null) queue.enqueue(root.right);
+
+  result.push(root.d);
+
+  while(queue.size() > 0){
+    n = queue.dequeue();
+    n.bfs(result, queue);
+  }
+
+  return result.join(',');
+}
+
 
 if(typeof exports !== 'undefined') {
     exports.Root = Root;
