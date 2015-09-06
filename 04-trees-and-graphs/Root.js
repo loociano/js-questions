@@ -65,7 +65,7 @@ Root.prototype.dfs = function(result){
   
   var root = this;
 
-  var result = result || [];
+  var result = result || []; // DFS uses a stack to store the visited nodes
   result.push(root.d);
 
   root.visited = true;
@@ -79,11 +79,12 @@ Root.prototype.dfs = function(result){
   return result.join(',');
 }
 
+/** Breadth First Search */
 Root.prototype.bfs = function(result, queue){
 
   var root = this;
 
-  var queue = queue || new Queue();
+  var queue = queue || new Queue(); // BFS uses a queue to visit the nodes
   var result = result || [];
   
   if (root.left !== null) queue.enqueue(root.left);
