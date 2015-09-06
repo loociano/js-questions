@@ -30,6 +30,9 @@ require('../02-linked-lists/2-6');
 
 require('../02-linked-lists/2-7');
 
+code = require('../03-stacks-and-queues/Queue');
+Queue = code.Queue;
+
 code = require('../04-trees-and-graphs/Root');
 Root = code.Root;
 
@@ -569,6 +572,20 @@ describe('Linked Lists', function(){
 
             assert.equal(head.isPalindrome2(), false);
         });
+    });
+});
+
+describe('Queues', function(){
+    it('Queue with two elements', function(){
+        
+        var queue = new Queue();
+        queue.enqueue('a');
+        queue.enqueue('b');
+
+        assert.equal(queue.size(), 2);
+
+        assert.equal(queue.dequeue(), 'a');
+        assert.equal(queue.dequeue(), 'b');
     });
 });
 
